@@ -1,143 +1,103 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&height=240&color=0:101820,50:173b35,100:7c3aed&text=GoodbyeDPI%20Turkey&fontColor=ffffff&fontSize=42&fontAlignY=40&desc=LINUX%20%2F%20QUAD9%20EDITION&descSize=18&descAlignY=58&animation=fadeIn" width="100%" alt="GoodbyeDPI Turkey Linux Quad9 Edition"/>
+GoodbyeDPI Turkey — Linux
+QUAD9 EDITION
 
-<br>
-
+<p>
 <a href="https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-">
-<img src="https://img.shields.io/badge/PROJECT-PERSONAL_FORK-161b22?style=for-the-badge&logo=github&logoColor=white" alt="Personal fork"/>
+<img src="https://img.shields.io/badge/GitHub-Personal_Fork-24292f?style=for-the-badge&logo=github&logoColor=white" alt="GitHub personal fork">
 </a>
 <a href="https://quad9.net/">
-<img src="https://img.shields.io/badge/DNS-QUAD9-d71921?style=for-the-badge" alt="Quad9 DNS"/>
+<img src="https://img.shields.io/badge/DNS-Quad9-d71921?style=for-the-badge" alt="Quad9">
 </a>
-<img src="https://img.shields.io/badge/PLATFORM-LINUX-2f81f7?style=for-the-badge&logo=linux&logoColor=white" alt="Linux"/>
-<img src="https://img.shields.io/badge/FOCUS-CONVENIENCE-8957e5?style=for-the-badge" alt="Convenience"/>
+<img src="https://img.shields.io/badge/Platform-Linux-2f81f7?style=for-the-badge&logo=linux&logoColor=white" alt="Linux">
+</p>
 
-<br><br>
-
-Kendi sistemim. Kendi yapılandırmam. Daha kolay kurulum.
-
-Linux kullanımı, Quad9 DNS tercihi ve kişisel geliştirme için hazırlanmış bir açık kaynak uyarlaması.
-
-<br>
-
-<a href="#-proje-hakkinda">PROJE</a>   ◆   <a href="#-kurulum">KURULUM</a>   ◆   <a href="#-kontrol-paneli">TESTLER</a>   ◆   <a href="#-credits">CREDITS</a>
+Kendi Linux ortamım için. Kendi DNS tercihimle. Daha az manuel ayar.
 
 </div>
 
 <table>
 <tr>
-<td width="33%" align="center">
-<h3>🐧 LINUX</h3>
-<sub>Günlük kullanım</sub>
+<td width="50%">
+
+🎯 Projenin amacı
+
+Linux sistemimi yeniden kurduğumda tercih ettiğim DNS yapılandırmasını tekrar tekrar elle yapmak zorunda kalmamak.
+
 </td>
-<td width="33%" align="center">
-<h3>🌐 QUAD9</h3>
-<sub>Tercih ettiğim DNS</sub>
-</td>
-<td width="33%" align="center">
-<h3>⚙️ PERSONAL</h3>
-<sub>Kişisel uyarlama</sub>
+<td width="50%">
+
+🛠️ Geliştirme amacı
+
+Fork'lama, Linux ağ yapılandırması ve kaynak kod üzerinde çalışarak kendimi geliştirmek.
+
 </td>
 </tr>
 </table>
 
-🟢 Proje hakkında
+💻 Proje hakkında
 
-Bu forku, Linux kullanırken tercih ettiğim Quad9 DNS yapılandırmasını ve ihtiyaç duyduğum kurulum adımlarını bir araya getirmek için oluşturdum.
+Bu depo, salihkahveci090/GoodbyeDPI-Turkey-Linux projesi temel alınarak kişisel kullanım ihtiyaçlarıma göre düzenlenmektedir.
 
-Sistemimi her yeniden kurduğumda aynı ayarları elle tekrarlamak yerine, kendi kullanım senaryoma uygun bir depo oluşturmak ve bu süreçte kendimi geliştirmek istiyorum.
+Linux kullanıyorum ve DNS hizmeti olarak Quad9'u tercih ediyorum. Bu fork'u, kullandığım yapılandırmayı kendi ihtiyaçlarıma uygun hâle getirmek ve günlük kurulum sürecimi kolaylaştırmak için oluşturdum.
 
-<details>
-<summary><b>⌁ Projenin kapsamını görüntüle</b></summary>
+<div align="center">
 
-<br>
+LINUX   /   QUAD9 DNS   /   PERSONAL FORK
 
-Linux ortamındaki kurulum sürecini kolaylaştırmak.
-Quad9 DNS tercihini mevcut yapılandırmayla uyumlu hâle getirmek.
-Tekrarlanan manuel işlemleri azaltmak.
-Kaynak kod üzerinde çalışarak Linux ağ yapılandırmasını öğrenmek.
+</div>
 
-Bu depo bağımsız bir kişisel fork'tur. Gerçek özellikler, depodaki kod ve yapılandırma dosyalarına bağlıdır.
-
-</details>
-
-💻 Kurulum
-
-<img src="https://img.shields.io/badge/STEP_01-CLONE-238636?style=flat-square" alt="Step 1"/>
-
-Depoyu bilgisayarına indir
-
+🚀 Kurulum
+01 — Depoyu indir
 bash
 git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
 cd GoodbyeDPI-Turkey-Linux-
 
+02 — Gerekli paketleri yükle
 
-<img src="https://img.shields.io/badge/STEP_02-DEPENDENCIES-8957e5?style=flat-square" alt="Step 2"/>
-
-Ubuntu / Debian bağımlılıkları
+Arch Linux / CachyOS:
 
 bash
-sudo apt update
-
-sudo apt install -y \
-  build-essential \
-  libnetfilter-queue-dev \
-  libmnl-dev \
-  libnfnetlink-dev \
+sudo pacman -S --needed \
+  libnetfilter_queue \
   nftables \
-  dnsutils
+  gcc \
+  make
 
 
-<img src="https://img.shields.io/badge/STEP_03-INSPECT-2f81f7?style=flat-square" alt="Step 3"/>
+Ubuntu / Debian kullanıyorsan paket adları farklı olabilir. Bu dağıtımlarda derleme için gerekli geliştirme paketlerini ayrıca kurmalısın.
 
-Kurulum dosyalarını kontrol et
-
+03 — Dosyaları kontrol et
 bash
 ls -la
 
 
-Depoda bulunan kurulum talimatlarını takip et. Bir scripti yönetici yetkisiyle çalıştırmadan önce içeriğini incele ve sistemde yapacağı değişiklikleri anla.
+Depoda bulunan README talimatlarını, kurulum scriptlerini ve varsa Makefile dosyasını incele.
 
-⚠️ Not: Kurulum scriptinin dosya adı ve davranışı doğrulanmadan belirli bir komut varsayılmamalıdır.
-🛠️ Servis yönetimi
+04 — Kurulumu tamamla
+
+Depodaki gerçek kurulum talimatlarını takip et. Scripti yönetici yetkisiyle çalıştırmadan önce içeriğini kontrol et.
+
+Dikkat: Kurulum scriptinin adı ve davranışı mevcut depo içeriğinden doğrulanmalıdır. Bu README, doğrulanmamış bir scriptin kesin olarak bulunduğunu veya bütün ayarları otomatik yaptığını iddia etmez.
+⚙️ Servis yönetimi
 
 Kurulum goodbyedpi adında bir systemd servisi oluşturuyorsa:
 
-<table>
-<tr><th>İşlem</th><th>Komut</th></tr>
-<tr>
-<td>Durum</td>
-<td><code>sudo systemctl status goodbyedpi</code></td>
-</tr>
-<tr>
-<td>Yeniden başlat</td>
-<td><code>sudo systemctl restart goodbyedpi</code></td>
-</tr>
-<tr>
-<td>Durdur</td>
-<td><code>sudo systemctl stop goodbyedpi</code></td>
-</tr>
-<tr>
-<td>Loglar</td>
-<td><code>sudo journalctl -u goodbyedpi -f</code></td>
-</tr>
-</table>
+İşlem	Komut
+Durum	sudo systemctl status goodbyedpi
+Yeniden başlat	sudo systemctl restart goodbyedpi
+Durdur	sudo systemctl stop goodbyedpi
+Loglar	sudo journalctl -u goodbyedpi -f
 
-Servisin gerçekten mevcut olduğunu kontrol etmek için:
+Servisin mevcut olup olmadığını kontrol etmek için:
 
 bash
 systemctl list-unit-files --type=service | grep -i goodbyedpi
 
-📡 Kontrol paneli
+🌐 DNS kontrolü
 
-<div align="center">
-
-<img src="https://img.shields.io/badge/DNS-RESOLUTION-238636?style=for-the-badge" alt="DNS resolution"/>
-
-</div>
-
-DNS çözümlemesini kontrol et:
+DNS çözümlemesini test et:
 
 bash
 dig discord.com +short
@@ -149,88 +109,42 @@ bash
 resolvectl status
 
 
-<div align="center">
+Quad9 bağlantısını doğrulamak için on.quad9.net adresini ziyaret edebilirsin.
 
-<a href="https://on.quad9.net/">
-<img src="https://img.shields.io/badge/OPEN-QUAD9_CONNECTION_TEST-d71921?style=for-the-badge" alt="Quad9 connection test"/>
-</a>
-
-</div>
-
-HTTPS bağlantısını kontrol et:
-
-bash
-curl -sS -o /dev/null \
-  -w "HTTP Status: %{http_code}\n" \
-  https://discord.com
-
-
-<details>
-<summary><b>🌐 Quad9 DNS adresleri</b></summary>
-
-<br>
-
-Sunucu	IPv4
+Quad9 DNS	IPv4
 Birincil	9.9.9.9
 İkincil	149.112.112.112
 
-Resmî dokümantasyon: Quad9 Service Addresses.
-
-DNS çözümlemesinin başarılı olması tek başına Quad9 kullanıldığını veya DNS sorgularının şifrelendiğini kanıtlamaz. Bağlantı testi ve etkin ağ yapılandırması ayrıca kontrol edilmelidir.
-
-</details>
+Kaynak: <a href="https://quad9.net/service/service-addresses-and-features/">Quad9 resmî dokümantasyonu</a>.
 
 🧹 Kaldırma
 
-Depoda bulunan kaldırma talimatlarını izle. Bir kaldırma scripti varsa önce gerçek dosya adını ve içeriğini doğrula.
+Depodaki kaldırma talimatlarını incele. Bir kaldırma scripti mevcutsa önce içeriğini kontrol et; ardından uygun olduğundan emin olarak çalıştır.
 
-Örneğin service_remove.sh dosyası mevcutsa:
-
-bash
-less ./service_remove.sh
-
-
-İçeriğini inceledikten sonra uygun olduğundan eminsen:
-
-bash
-sudo bash ./service_remove.sh
-
-
-Kaldırma işleminin tüm DNS ayarlarını, firewall kurallarını ve servisleri otomatik olarak geri yüklediğini varsayma.
+Kaldırma işleminin DNS ayarlarını, firewall kurallarını ve servisleri otomatik olarak geri yüklediğini varsayma.
 
 ⚖️ Lisans
 
-<div align="center">
+MIT License — Özgürce kullanabilir, değiştirebilir ve dağıtabilirsiniz.
 
-<img src="https://img.shields.io/badge/LICENSE-MIT-238636?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License"/>
-
-Özgürce kullanabilir, değiştirebilir ve dağıtabilirsiniz.
-
-</div>
-
-Lisansın tam metni için LICENSE dosyasına bakın. MIT lisansı kullanılacaksa dosyanın gerçekten mevcut olduğundan ve kaynak projelerin lisans koşullarıyla uyumun doğrulandığından emin olun.
+Lisansın tam metni LICENSE dosyasında bulunmalıdır. Bu bildirim, depodaki kodların ve üçüncü taraf bileşenlerin lisansları kontrol edilerek doğrulanmalıdır.
 
 🛡️ Sorumluluk reddi
 
-Bu depo, geliştiricinin kişisel Linux yapılandırma ihtiyacından doğan bağımsız bir teknik çalışmadır.
+Bu depo, kişisel kullanım ve teknik öğrenme amacıyla hazırlanmış bağımsız bir uyarlamadır. Kaynak projelerin geliştiricileriyle resmî ortaklık veya onay ilişkisi bulunduğu anlamına gelmez.
 
-Yazılım garanti verilmeksizin sunulur. Kullanıcılar kaynak kodu incelemekten, sistemlerini korumaktan ve yazılımı geçerli mevzuata uygun kullanmaktan sorumludur. Bu açıklama, kanunen sınırlandırılamayan sorumlulukları ortadan kaldırmaz veya hukuki danışmanlık yerine geçmez.
+Yazılım, yürürlükteki hukukun izin verdiği ölçüde garanti verilmeksizin sunulur. Kullanıcılar yazılımı kullanırken geçerli mevzuata uymalı ve sistemlerinde yaptıkları değişiklikleri değerlendirmelidir. Bu açıklama, kanunen sınırlandırılamayan sorumlulukları ortadan kaldırmaz.
 
 🙏 Credits
-
-Bu projede yararlanılan kaynaklar:
-
 @ValdikSS — GoodbyeDPI
 @cagritaskn — GoodbyeDPI-Turkey
 @salihkahveci090 — GoodbyeDPI-Turkey-Linux
 Quad9 — DNS hizmeti
 
-Kaynak projelerin hakları ve lisans koşulları ilgili sahiplerine aittir. Bu depo bağımsız bir kişisel uyarlamadır.
-
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&height=100&color=0:101820,100:173b35&text=END_OF_README&fontColor=ffffff&fontSize=22&fontAlignY=50" width="100%" alt="End of README"/>
+GoodbyeDPI Turkey · Linux · Quad9 Edition
 
-Made for my own Linux workflow.
+Built around my own Linux workflow.
 
 </div>
