@@ -43,16 +43,16 @@ info "systemd servis dosyası kuruluyor..."
 cp "$INSTALL_DIR/systemd/goodbyedpi.service" "$SERVICE_FILE"
 systemctl daemon-reload
 
-info "DNS yapılandırması ayarlanıyor (Yandex DNS 77.88.8.8)..."
+info "DNS yapılandırması ayarlanıyor (Quad9 DNS 9.9.9.9)..."
 
 mkdir -p /etc/systemd/resolved.conf.d/
 
 cat > "$RESOLVED_CONF" << 'EOF'
 [Resolve]
-DNS=77.88.8.8 77.88.8.1
-FallbackDNS=1.1.1.1
-DNSOverTLS=no
-DNSSEC=no
+DNS=9.9.9.9#dns.quad9.net 149.112.149.112#dns.quad9.net
+FallbackDNS=9.9.9.10#dns.quad9.net 149.112.149.10#dns.quad9.net
+DNSOverTLS=opportunistic
+DNSSEC=yes
 EOF
 
 info "systemd-resolved yeniden başlatılıyor..."
@@ -72,7 +72,7 @@ info "nftables kuralları:"
 nft list table inet goodbyedpi 2>/dev/null || warn "nftables kuralları henüz yüklenmedi"
 echo ""
 info "DNS testi:"
-resolvectl status 2>/dev/null | grep -A3 "DNS Servers" || dig +short discord.com @77.88.8.8 -p 1253
+resolvectl status 2>/dev/null | grep -A3 "DNS Servers" || dig +short discord.com @9.9.9.9
 echo ""
 info "Discord erişim testi (birkaç saniye sürebilir):"
 curl -s --max-time 10 -o /dev/null -w "HTTP durum kodu: %{http_code}\n" https://discord.com || \
