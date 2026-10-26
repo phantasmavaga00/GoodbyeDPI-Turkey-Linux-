@@ -1,109 +1,201 @@
- <div align="center">
-> GoodbyeDPI_Turkey_Linux
-[ QUAD9 EDITION ]
+<div align="center">
 
-Linux / Networking / DNS
+GoodbyeDPI Turkey — Linux
+Quad9 Edition
 
-![Linux](https://img.shields.io/badge/OS-Linux-24292f?style=flat-square&logo=linux) ![DNS](https://img.shields.io/badge/DNS-Quad9-d71921?style=flat-square) ![GitHub](https://img.shields.io/badge/Source-GitHub-24292f?style=flat-square&logo=github)
+Linux için kişisel yapılandırma ve kurulum kolaylığı.
+
+![Linux](https://img.shields.io/badge/Platform-Linux-24292f?style=for-the-badge&logo=linux&logoColor=white) ![Quad9](https://img.shields.io/badge/DNS-Quad9-d71921?style=for-the-badge) ![License](https://img.shields.io/badge/License-MIT-16803c?style=for-the-badge)
 
 Daha az manuel ayar. Daha pratik Linux kurulumu.
 
 </div>
-01 // PROJECT_ORIGIN
 
-Bu projenin kaynak zinciri:
-mermaid
+İçindekiler
+Proje hakkında
+Geliştiricinin notu
+Gereksinimler
+Kurulum
+Servis yönetimi
+Test ve doğrulama
+Kaldırma
+Lisans
+Sorumluluk reddi
+Credits
+Proje hakkında
 
-flowchart TD
-    A["ValdikSS / GoodbyeDPI"]
-    B["cagritaskn / GoodbyeDPI-Turkey"]
-    C["salihkahveci090 / Linux Port"]
-    D["phantasmavaga00 / Quad9 Edition"]
+GoodbyeDPI Turkey — Linux (Quad9 Edition), Linux ortamında kullandığım yapılandırmayı kolaylaştırmak amacıyla hazırladığım kişisel bir uyarlamadır.
 
-    A --> B --> C --> D
+Projenin temel amacı, tercih ettiğim Quad9 DNS yapılandırmasını kurulum sürecimle bir araya getirerek tekrar tekrar manuel ayar yapma ihtiyacını azaltmaktır.
 
-    style A fill:#24292f,color:#fff,stroke:#484f58
-    style B fill:#24292f,color:#58a6ff,stroke:#58a6ff
-    style C fill:#24292f,color:#bc8cff,stroke:#bc8cff
-    style D fill:#0d2818,color:#3fb950,stroke:#3fb950
+Temel bileşenler
+Linux: Hedef işletim sistemi.
+Quad9 DNS: Tercih edilen DNS hizmeti.
+nftables: Linux ağ filtreleme altyapısı.
+NFQUEUE: Proje tarafından kullanılıyorsa paket işleme mekanizması.
+systemd: İlgili servis dosyaları mevcutsa servis yönetimi.
 
-<details>
-<summary><code>cat sources.txt</code></summary>
+Kullanılan bileşenlerin ve kurulum adımlarının ayrıntıları, deponun mevcut kaynak koduna bağlıdır.
 
-    ValdikSS/GoodbyeDPI
-    cagritaskn/GoodbyeDPI-Turkey
-    salihkahveci090/GoodbyeDPI-Turkey-Linux
-    phantasmavaga00/GoodbyeDPI-Turkey-Linux-
-
-</details>
-02 // WHY_THIS_FORK
-text
-
-$ whoami
-Linux user
-
-$ preferred_dns
-Quad9
+Geliştiricinin notu
 
 Linux kullanıyorum ve DNS hizmeti olarak Quad9'u tercih ediyorum.
 
-Sistemi yeniden kurduğumda DNS ayarlarını ve kurulum adımlarını tekrar tekrar elle yapmak istemedim. Bu fork'u, kendi kullandığım yapılandırmayı bir araya getirip kurulum sürecini kolaylaştırmak için oluşturdum.
+Sistemimi yeniden kurduğumda veya Linux dağıtımımı değiştirdiğimde, DNS ayarlarını ve gerekli kurulum adımlarını her seferinde yeniden elle yapmak istemedim.
 
-    Kişisel bir ihtiyaçtan doğan, Linux odaklı bir yapılandırma çalışmasıdır.
+Bu forku, kendi kullandığım yapılandırmayı bir araya getirmek ve kurulum sürecini daha pratik hâle getirmek için oluşturdum.
 
-03 // QUICK_START
-1. Depoyu indir
+Kısacası, kişisel bir ihtiyaçtan doğan küçük bir kolaylaştırma çalışması.
+Gereksinimler
+
+Kurulum yöntemine bağlı olarak aşağıdaki paketler gerekebilir:
+
+GCC ve Make gibi derleme araçları.
+libnetfilter-queue geliştirme kütüphanesi.
+libmnl ve libnfnetlink kütüphaneleri.
+nftables.
+DNS testleri için dig.
+Ubuntu / Debian
 bash
-
-git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
-cd GoodbyeDPI-Turkey-Linux-
-
-2. Bağımlılıkları yükle
-
-Ubuntu / Debian:
-bash
-
 sudo apt update
 sudo apt install -y \
   build-essential \
   libnetfilter-queue-dev \
   libmnl-dev \
   libnfnetlink-dev \
-  nftables
+  nftables \
+  dnsutils
 
-3. Kurulum dosyasını kontrol et
+
+Diğer dağıtımlarda paket adları ve kurulum yöntemleri farklı olabilir.
+
+Kurulum
+1. Depoyu klonla
 bash
+git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
+cd GoodbyeDPI-Turkey-Linux-
 
-ls
-
-Depoda bulunan kurulum scriptinin adını doğrula. Çalıştırmadan önce içeriğini incele:
+2. Dosyaları kontrol et
 bash
+ls -la
 
-less ./SCRIPT_ADI.sh
 
-SCRIPT_ADI.sh yerine depodaki gerçek dosya adını yaz. Scriptin Quad9 DNS ayarlarını ve gerekli servisleri gerçekten yapılandırdığını kontrol ettikten sonra çalıştır.
-04 // DNS_CONFIGURATION
+Depodaki kurulum scriptinin adını belirle. Yönetici yetkisiyle çalıştırmadan önce scriptin içeriğini incele ve hangi sistem ayarlarını değiştirdiğini kontrol et.
 
-Quad9 standart IPv4 DNS adresleri:
-text
+3. Kurulumu gerçekleştir
 
-PRIMARY   = 9.9.9.9
-SECONDARY = 149.112.112.112
+Depoda bulunan kurulum talimatlarını takip et. Kurulum scriptinin DNS ayarlarını, servis dosyalarını ve firewall kurallarını nasıl yapılandırdığını doğrulamadan otomatik olarak doğru çalışacağını varsayma.
 
-DNS yönlendirmesi tek başına şifreleme sağlamaz. Şifreli DNS için ayrıca uygun istemci ve yapılandırma gerekir.
-05 // DISCLAIMER
+Güvenlik notu: Yönetici yetkisiyle çalıştırılan scriptler sistem yapılandırmasını değiştirebilir. Çalıştırmadan önce kodu incele ve önemli ayarlarını yedekle.
+Servis yönetimi
 
-Bu depo kişisel bir teknik çalışmadır. Kaynak projeler ilgili geliştiricilerine aittir; bu depo resmî destek veya onay anlamına gelmez.
+Kurulum sonucunda goodbyedpi adında bir systemd servisi oluşturulmuşsa aşağıdaki komutlar kullanılabilir.
 
-Yazılım herhangi bir çalışma garantisi verilmeksizin sunulur. Kullanıcılar kodu incelemekten, sistemlerini korumaktan ve yazılımı geçerli mevzuata uygun kullanmaktan sorumludur. Bu açıklama, kanunen doğabilecek sorumlulukları ortadan kaldırmaz.
+Servis durumunu görüntüle:
 
-Kaynak kodların lisans koşullarını ilgili depolardan ve bu deponun LICENSE dosyasından kontrol edin.
+bash
+sudo systemctl status goodbyedpi
+
+
+Servisi yeniden başlat:
+
+bash
+sudo systemctl restart goodbyedpi
+
+
+Servisi durdur:
+
+bash
+sudo systemctl stop goodbyedpi
+
+
+Logları görüntüle:
+
+bash
+sudo journalctl -u goodbyedpi -f
+
+
+Servis adını doğrulamak için:
+
+bash
+systemctl list-unit-files --type=service | grep -i goodbyedpi
+
+
+Bu komutlar, ilgili servisin sistemde gerçekten bulunması durumunda geçerlidir.
+
+Test ve doğrulama
+DNS çözümlemesi
+bash
+dig discord.com +short
+
+
+Bu komut, alan adının çözümlenip çözümlenmediğini kontrol eder. Tek başına sorgunun Quad9 üzerinden yapıldığını kanıtlamaz.
+
+DNS yapılandırması
+
+systemd-resolved kullanılıyorsa:
+
+bash
+resolvectl status
+
+
+Quad9 kullanımını kontrol etmek için on.quad9.net adresini de ziyaret edebilirsin.
+
+HTTPS bağlantısı
+bash
+curl -sS -o /dev/null -w "%{http_code}\n" https://discord.com
+
+
+Dönen HTTP durum kodu, hedef hizmetten alınan yanıtı gösterir. Sonuçlar ağ koşullarına ve hedef hizmetin durumuna göre değişebilir.
+
+Quad9 DNS adresleri
+Tür	IPv4 adresi
+Birincil DNS	9.9.9.9
+İkincil DNS	149.112.112.112
+
+Resmî kaynak: Quad9 — Service Addresses.
+
+DNS sunucusu adresi kullanmak tek başına DNS sorgularının şifrelendiği anlamına gelmez. Şifreleme için ayrıca uygun bir istemci ve yapılandırma gerekir.
+
+Kaldırma
+
+Depoda bir kaldırma scripti bulunuyorsa önce dosya adını ve içeriğini doğrula.
+
+Scriptin hangi servisleri, DNS ayarlarını ve firewall kurallarını değiştirdiğini incele. Ardından depodaki kaldırma talimatlarını takip et.
+
+Kaldırma işleminin tüm ayarları otomatik olarak geri yüklediğini varsayma. İşlem sonrasında DNS yapılandırmasını ve servis durumunu kontrol et.
+
+Lisans
+
+MIT License — Özgürce kullanabilir, değiştirebilir ve dağıtabilirsiniz.
+
+Lisans koşulları ve telif hakkı bildirimleri için depodaki LICENSE dosyasını inceleyin.
+
+Not: Bu lisans bildirimi, depodaki kodların gerçekten MIT lisansı altında dağıtıldığı ve kullanılan üçüncü taraf bileşenlerin lisanslarıyla uyumlu olduğu doğrulandıktan sonra kullanılmalıdır.
+Sorumluluk reddi
+
+Bu depo, geliştiricinin kişisel Linux yapılandırma ihtiyacından doğan bağımsız bir teknik çalışmadır. Kaynak projelerin geliştiricileriyle resmî bir ortaklık veya onay ilişkisi bulunduğu anlamına gelmez.
+
+Yazılım, yürürlükteki hukukun izin verdiği ölçüde, açık veya örtülü garanti verilmeksizin sunulur. Her sistemde hatasız çalışacağı veya belirli bir sonucu sağlayacağı garanti edilmez.
+
+Kullanıcılar yazılımı çalıştırmadan önce kaynak kodu incelemeli, sistemlerini korumalı ve geçerli mevzuata uygun hareket etmelidir. Bu açıklama, kanunen sınırlandırılamayan sorumlulukları ortadan kaldırmaz ve hukuki danışmanlık niteliği taşımaz.
+
+Credits
+
+Bu projenin oluşmasına katkı sağlayan açık kaynak projelerin geliştiricilerine ve topluluğa teşekkürler.
+
+Proje	Katkı
+ValdikSS/GoodbyeDPI	Orijinal proje
+cagritaskn/GoodbyeDPI-Turkey	Türkiye odaklı uyarlama
+salihkahveci090/GoodbyeDPI-Turkey-Linux	Linux portu
+Quad9	DNS hizmeti
+
+Bu depo, yukarıdaki çalışmaların üzerine kişisel kullanım ihtiyaçlarım doğrultusunda hazırlanmış bir uyarlamadır. Kaynak projelerin telif hakları ve lisans koşulları ilgili hak sahiplerine aittir.
 
 <div align="center">
-text
 
-[ END_OF_README ]
+GoodbyeDPI Turkey — Linux · Quad9 Edition
 
-Built for my own Linux workflow. Shared for the community.
+Kendi Linux kurulumumu kolaylaştırmak için.
 
 </div>
