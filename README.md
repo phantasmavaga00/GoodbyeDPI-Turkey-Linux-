@@ -146,7 +146,7 @@ Bu projeyi mümkün kılan tüm açık kaynak geliştiricilerine teşekkür eder
     Quad9 — Güvenli DNS altyapısı
 
 <div align="center">
-
+bash``
 GoodbyeDPI Turkey - Linux (Quad9 Edition)
 
 Kişisel kullanım için uyarlanmış bir fork.
