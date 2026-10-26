@@ -1,86 +1,64 @@
  <div align="center">
-🐧 GoodbyeDPI Turkey
-Linux · Quad9 Edition
+> GoodbyeDPI_Turkey_Linux
+[ QUAD9 EDITION ]
 
-Linux için kişisel DNS yapılandırması ve kurulum kolaylığı
+Linux / Networking / DNS
 
-![Linux](https://img.shields.io/badge/Platform-Linux-1793D1?style=flat-square&logo=linux&logoColor=white) ![DNS](https://img.shields.io/badge/DNS-Quad9-D71921?style=flat-square) ![GitHub](https://img.shields.io/badge/Hosted%20on-GitHub-181717?style=flat-square&logo=github)
+![Linux](https://img.shields.io/badge/OS-Linux-24292f?style=flat-square&logo=linux) ![DNS](https://img.shields.io/badge/DNS-Quad9-d71921?style=flat-square) ![GitHub](https://img.shields.io/badge/Source-GitHub-24292f?style=flat-square&logo=github)
 
-<br>
-
-Kurulum · Proje geçmişi · Geliştirici notu
+Daha az manuel ayar. Daha pratik Linux kurulumu.
 
 </div>
-🌳 Proje geçmişi
+01 // PROJECT_ORIGIN
 
-Bu depo, aşağıdaki açık kaynak çalışmalarından gelen proje zincirinin devamında, kendi Linux ve Quad9 kullanım ihtiyacım için düzenlenmiştir.
+Bu projenin kaynak zinciri:
 mermaid
 
 flowchart TD
-    A["ValdikSS<br/>GoodbyeDPI"]
-    B["cagritaskn<br/>GoodbyeDPI-Turkey"]
-    C["salihkahveci090<br/>GoodbyeDPI-Turkey-Linux"]
-    D["phantasmavaga00<br/>Quad9 Edition"]
+    A["ValdikSS / GoodbyeDPI"]
+    B["cagritaskn / GoodbyeDPI-Turkey"]
+    C["salihkahveci090 / Linux Port"]
+    D["phantasmavaga00 / Quad9 Edition"]
 
     A --> B --> C --> D
 
-    style A fill:#24292f,color:#fff,stroke:#57606a
-    style B fill:#0969da,color:#fff,stroke:#0550ae
-    style C fill:#8250df,color:#fff,stroke:#6639ba
-    style D fill:#16803c,color:#fff,stroke:#116329
+    style A fill:#24292f,color:#fff,stroke:#484f58
+    style B fill:#24292f,color:#58a6ff,stroke:#58a6ff
+    style C fill:#24292f,color:#bc8cff,stroke:#bc8cff
+    style D fill:#0d2818,color:#3fb950,stroke:#3fb950
 
 <details>
-<summary><strong>🔗 Kaynak depoları görüntüle</strong></summary>
+<summary><code>cat sources.txt</code></summary>
 
-    ValdikSS/GoodbyeDPI — Orijinal proje.
-    cagritaskn/GoodbyeDPI-Turkey — Türkiye odaklı uyarlama.
-    salihkahveci090/GoodbyeDPI-Turkey-Linux — Linux portu.
-    phantasmavaga00/GoodbyeDPI-Turkey-Linux- — Bu depo.
-
-Kaynak kodların telif hakları ve lisansları ilgili hak sahiplerine aittir. Fork ilişkileri ve kullanılan bileşenlerin lisansları depo geçmişi üzerinden doğrulanmalıdır.
+    ValdikSS/GoodbyeDPI
+    cagritaskn/GoodbyeDPI-Turkey
+    salihkahveci090/GoodbyeDPI-Turkey-Linux
+    phantasmavaga00/GoodbyeDPI-Turkey-Linux-
 
 </details>
-💬 Neden bu fork?
+02 // WHY_THIS_FORK
+text
 
-    Geliştiricinin notu
+$ whoami
+Linux user
+
+$ preferred_dns
+Quad9
 
 Linux kullanıyorum ve DNS hizmeti olarak Quad9'u tercih ediyorum.
 
-Sistemi yeniden kurduğumda veya Linux dağıtımımı değiştirdiğimde, DNS ayarlarını ve gerekli kurulum adımlarını her seferinde yeniden yapmak istemedim.
+Sistemi yeniden kurduğumda DNS ayarlarını ve kurulum adımlarını tekrar tekrar elle yapmak istemedim. Bu fork'u, kendi kullandığım yapılandırmayı bir araya getirip kurulum sürecini kolaylaştırmak için oluşturdum.
 
-Bu depoyu, kendi kullandığım yapılandırmayı Quad9 ile bir araya getirmek ve kurulum sürecini daha pratik hâle getirmek için oluşturdum.
+    Kişisel bir ihtiyaçtan doğan, Linux odaklı bir yapılandırma çalışmasıdır.
 
-Kısacası: Kendi ihtiyacım, kendi yapılandırmam, daha kolay kurulum.
-✨ Neler amaçlanıyor?
-
-<details open>
-<summary><strong>🐧 Linux kurulumu</strong></summary>
-
-Linux ortamındaki kurulum adımlarını tek bir yerde toplamak ve tekrar eden manuel işlemleri azaltmak.
-
-</details>
-
-<details>
-<summary><strong>🌐 Quad9 DNS</strong></summary>
-
-Tercih ettiğim Quad9 DNS yapılandırmasını kurulum sürecine dâhil etmek.
-
-</details>
-
-<details>
-<summary><strong>⚙️ Kolay yönetim</strong></summary>
-
-Servis durumunu kontrol etme, logları görüntüleme ve kaldırma adımlarını anlaşılır hâle getirmek.
-
-</details>
-🚀 Kurulum
-1 · Depoyu indir
+03 // QUICK_START
+1. Depoyu indir
 bash
 
 git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
 cd GoodbyeDPI-Turkey-Linux-
 
-2 · Bağımlılıkları yükle
+2. Bağımlılıkları yükle
 
 Ubuntu / Debian:
 bash
@@ -91,101 +69,41 @@ sudo apt install -y \
   libnetfilter-queue-dev \
   libmnl-dev \
   libnfnetlink-dev \
-  nftables \
-  dnsutils
+  nftables
 
-3 · Kurulum scriptini incele
-
-Yönetici yetkisiyle çalıştırmadan önce scriptin içeriğini kontrol et:
+3. Kurulum dosyasını kontrol et
 bash
 
-less service_install_dnsredir_turkey.sh
+ls
 
-4 · Kurulumu çalıştır
+Depoda bulunan kurulum scriptinin adını doğrula. Çalıştırmadan önce içeriğini incele:
 bash
 
-sudo bash service_install_dnsredir_turkey.sh
+less ./SCRIPT_ADI.sh
 
-Kurulum scriptinin gerçekten oluşturduğu servisleri ve DNS ayarlarını kontrol et. Scriptin davranışı depo sürümüne göre değişebilir.
-5 · Durumu doğrula
-bash
+SCRIPT_ADI.sh yerine depodaki gerçek dosya adını yaz. Scriptin Quad9 DNS ayarlarını ve gerekli servisleri gerçekten yapılandırdığını kontrol ettikten sonra çalıştır.
+04 // DNS_CONFIGURATION
 
-sudo systemctl status goodbyedpi
+Quad9 standart IPv4 DNS adresleri:
+text
 
-DNS çözümlemesini test et:
-bash
-
-dig discord.com +short
-
-    Not: Bu komutlar Ubuntu/Debian ve ilgili servis yapılandırması için örnektir. Kullandığın dağıtımda paketler veya servis adı farklı olabilir.
-
-🔧 Servis yönetimi
-
-<details>
-<summary><strong>Servis komutları</strong></summary>
-
-Servis durumunu görüntüle:
-bash
-
-sudo systemctl status goodbyedpi
-
-Yeniden başlat:
-bash
-
-sudo systemctl restart goodbyedpi
-
-Durdur:
-bash
-
-sudo systemctl stop goodbyedpi
-
-Logları takip et:
-bash
-
-sudo journalctl -u goodbyedpi -f
-
-</details>
-
-<details>
-<summary><strong>Kurulumu kaldır</strong></summary>
-
-Kaldırma scripti depoda mevcutsa, içeriğini kontrol ettikten sonra çalıştır:
-bash
-
-sudo bash service_remove.sh
-
-</details>
-🌐 Quad9 DNS
-
-Bu yapılandırmada hedeflenen standart Quad9 IPv4 adresleri:
-
-<div align="center">
-Birincil DNS	İkincil DNS
-9.9.9.9	149.112.112.112
-
-</div>
+PRIMARY   = 9.9.9.9
+SECONDARY = 149.112.112.112
 
 DNS yönlendirmesi tek başına şifreleme sağlamaz. Şifreli DNS için ayrıca uygun istemci ve yapılandırma gerekir.
-⚖️ Lisans
+05 // DISCLAIMER
 
-Bu depo, kaynak projelerden alınan veya uyarlanan kodlar içerebilir. Her bileşenin lisansı kendi koşullarına tabidir.
+Bu depo kişisel bir teknik çalışmadır. Kaynak projeler ilgili geliştiricilerine aittir; bu depo resmî destek veya onay anlamına gelmez.
 
-Lisans bilgileri için depodaki LICENSE dosyasını ve kaynak projelerin lisanslarını inceleyin. Tüm bileşenlerin lisans uyumluluğu doğrulanmadan deponun tamamı için belirli bir lisans iddiasında bulunulmamalıdır.
-🛡️ Sorumluluk reddi
+Yazılım herhangi bir çalışma garantisi verilmeksizin sunulur. Kullanıcılar kodu incelemekten, sistemlerini korumaktan ve yazılımı geçerli mevzuata uygun kullanmaktan sorumludur. Bu açıklama, kanunen doğabilecek sorumlulukları ortadan kaldırmaz.
 
-Bu proje, geliştiricinin kişisel Linux yapılandırma ihtiyacından doğan bağımsız bir teknik çalışmadır. Kaynak projelerin geliştiricileriyle resmî bir ortaklık veya onay ilişkisi olduğu anlamına gelmez.
-
-Yazılım, yürürlükteki hukukun izin verdiği ölçüde, açık veya örtülü garanti olmaksızın mevcut hâliyle sunulur. Her sistemde sorunsuz çalışacağı, belirli bir performans sağlayacağı veya belirli bir amaca uygun olacağı garanti edilmez.
-
-Kullanıcılar yazılımı çalıştırmadan önce kaynak kodu incelemeli, sistemlerini yedeklemeli ve geçerli mevzuata uygun hareket etmelidir. Geliştiricinin sorumluluğu, yürürlükteki hukuk kapsamında sınırlandırılamayan yükümlülükler bakımından ortadan kalkmaz.
-
-Bu metin hukuki danışmanlık veya hukuki sorumluluktan muafiyet garantisi değildir.
+Kaynak kodların lisans koşullarını ilgili depolardan ve bu deponun LICENSE dosyasından kontrol edin.
 
 <div align="center">
-🐧 GoodbyeDPI Turkey · Linux · Quad9
+text
 
-Kendi Linux kurulumumu kolaylaştırmak için geliştirdiğim kişisel proje.
+[ END_OF_README ]
 
-Kaynak geliştiricilere ve açık kaynak topluluğuna teşekkürler.
+Built for my own Linux workflow. Shared for the community.
 
 </div>
