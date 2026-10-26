@@ -74,19 +74,19 @@ EOF
 }
 
 configure_dns_yandex() {
-    info "DNS Yandex'e yönlendiriliyor (77.88.8.8)..."
+    info "DNS Quad9'e yönlendiriliyor (9.9.9.9)..."
     mkdir -p /etc/systemd/resolved.conf.d/
     cat > "$RESOLVED_CONF" << 'EOF'
 [Resolve]
-DNS=77.88.8.8
-FallbackDNS=1.1.1.1
-DNSOverTLS=no
-DNSSEC=no
+DNS=9.9.9.9#dns.quad9.net 149.112.149.112#dns.quad9.net
+FallbackDNS=9.9.9.10#dns.quad9.net 149.112.149.10#dns.quad9.net
+DNSOverTLS=opportunistic
+DNSSEC=yes
 DNSStubListener=no
 EOF
     chattr -i "$RESOLV_CONF" 2>/dev/null || true
-    echo "nameserver 77.88.8.8" > "$RESOLV_CONF"
-    echo "nameserver 77.88.8.1" >> "$RESOLV_CONF"
+    echo "nameserver 9.9.9.9" > "$RESOLV_CONF"
+    echo "nameserver 149.112.149.112" >> "$RESOLV_CONF"
     chattr +i "$RESOLV_CONF"
     systemctl restart systemd-resolved
 }
