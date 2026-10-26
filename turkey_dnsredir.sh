@@ -17,10 +17,10 @@ configure_dns_yandex
 
 info "goodbyedpi başlatılıyor (Ctrl+C ile durdur)..."
 "$BINARY" --fragment-size 5 --set-ttl 5 \
-    --dns-addr 77.88.8.8 --dns-port 1253 \
-    --dnsv6-addr 2a02:6b8::feed:0ff --dnsv6-port 1253 \
+    --dns-addr 9.9.9.9 --dns-port 53 \
+    --dnsv6-addr 2620:fe::fe --dnsv6-port 53 \
     --queue-num 0
 
 info "Temizleniyor..."
 /usr/sbin/nft delete table inet goodbyedpi 2>/dev/null
-info "GoodbyeDPI durduruldu."
+info "GoodbyeDPI durdurdu."
