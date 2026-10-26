@@ -1,88 +1,76 @@
-GoodbyeDPI Turkey - Linux (Quad9 Edition)
-Discord, YouTube ve ISP engellerine karşı güvenli ve hızlı erişim
+<div align="center">
 
-Bu proje, Türkiye'deki internet servis sağlayıcıları (ISP) tarafından uygulanan Deep Packet Inspection (DPI) engellemelerini aşmayı amaçlayan, Quad9 DNS altyapısıyla yapılandırılmış bir Linux çözümüdür.
+🐧 GoodbyeDPI Turkey — Linux
+Quad9 Edition
 
-📜 Proje Tarihçesi ve Dayanak
+A personal Linux configuration project
 
-Bu proje, aşağıdaki açık kaynak projeler üzerine kurulmuş çok katmanlı bir geliştirme çalışmasıdır.
+<p>
+<img src="https://img.shields.io/badge/Platform-Linux-1793D1?style=for-the-badge&logo=linux&logoColor=white" alt="Linux">
+<img src="https://img.shields.io/badge/DNS-Quad9-D71921?style=for-the-badge" alt="Quad9">
+<img src="https://img.shields.io/badge/Project-Open%20Source-2EA44F?style=for-the-badge&logo=github&logoColor=white" alt="Open Source">
+</p>
 
-Orijinal motor: ValdikSS/GoodbyeDPI — DPI atlatma algoritmasının temelini oluşturur.
-Türkiye özelleştirmesi: cagritaskn/GoodbyeDPI-Turkey — Türkiye'ye özgü filtreleme kuralları ve sahte paket yapıları.
-Linux portu: salihkahveci090/GoodbyeDPI-Turkey-Linux — Projenin Linux platformuna taşınması; systemd, nftables ve NFQUEUE entegrasyonu.
-Quad9 entegrasyonu (bu proje): Linux forkunun Quad9 DNS (9.9.9.9) kullanacak şekilde uyarlanmasını ve yapılandırılmasını hedefler.
-Neden Quad9?
+Bir kez yapılandır, yeniden kurulumlarda aynı işlemleri tekrar tekrar yapmak zorunda kalma.
 
-Bu fork, DNS yapılandırmasında Quad9 altyapısını kullanmayı hedefler. Tercih edilmesinin başlıca nedenleri şunlardır:
+</div>
 
-🔒 Güvenlik ve gizlilik: Kötü amaçlı alan adlarına karşı koruma sunan bir DNS hizmetinden yararlanmak.
-⚡ Performans ve kararlılık: DNS çözümleme performansını ve bağlantı kararlılığını iyileştirmeyi hedeflemek.
-🛡️ Modern standartlar: DNSSEC ve desteklenen şifreli DNS protokolleri gibi güvenlik özelliklerinden yararlanmak.
-Not: DNS yönlendirmesi tek başına tüm DNS trafiğini şifrelemez. Bu özelliğin sağlanması için kullanılan DNS istemcisinin ve yapılandırmanın DoT veya DoH gibi şifreli DNS protokollerini gerçekten kullanması gerekir.
-🛡️ Nasıl Çalışır?
+🌳 Proje Geçmişi
 
-Proje, DPI atlatma ve DNS yönlendirme mekanizmalarını bir araya getirir.
+Bu depo, aşağıdaki projelerden gelen çalışmaları temel alır. Zincir, bilinen kaynak ilişkisini ve bu fork'un amacını özetler.
 
-DNS yönlendirme (DNAT): Yapılandırılan nftables kuralları, UDP/53 üzerinden yapılan DNS sorgularını Quad9 DNS sunucularına yönlendirebilir.
-Paket manipülasyonu (DPI bypass): NFQUEUE üzerinden işlenen ağ paketleri, yapılandırılan GoodbyeDPI algoritmaları doğrultusunda değiştirilir. Sahte paketler ve parçalama teknikleri, DPI sistemlerinin trafiği sınıflandırmasını zorlaştırmayı amaçlar.
-Teknik akış
 mermaid
-flowchart LR
-    A[İstemci] -->|DNS UDP/53| B[nftables DNAT]
-    B -->|DNS sorgusu| C[Quad9 DNS]
-    A -->|HTTPS trafiği| D[NFQUEUE]
-    D -->|Paket işleme| E[DPI sistemi]
-    E -->|İletilen trafik| F[Gerçek sunucu]
+flowchart TD
+    A["ValdikSS / GoodbyeDPI<br/>Orijinal proje"]
+    B["cagritaskn / GoodbyeDPI-Turkey<br/>Türkiye odaklı uyarlama"]
+    C["salihkahveci090 / GoodbyeDPI-Turkey-Linux<br/>Linux portu"]
+    D["GoodbyeDPI Turkey - Linux<br/>Quad9 Edition"]
 
-Önemli: Diyagram kavramsal akışı gösterir. Gerçek davranış; kullanılan scriptlere, firewall kurallarına ve sistem yapılandırmasına bağlıdır.
-🐧 Desteklenen Dağıtımlar
+    A --> B
+    B --> C
+    C --> D
 
-Proje, systemd kullanan Linux dağıtımlarında çalışacak şekilde tasarlanmıştır.
+    style A fill:#24292f,color:#ffffff,stroke:#57606a
+    style B fill:#0969da,color:#ffffff,stroke:#0550ae
+    style C fill:#8250df,color:#ffffff,stroke:#6639ba
+    style D fill:#16803c,color:#ffffff,stroke:#116329
 
-Dağıtım ailesi	Destek durumu	Notlar
-Arch Linux	✅ Hedefleniyor	CachyOS, Manjaro ve EndeavourOS dahil
-Ubuntu / Debian	✅ Hedefleniyor	Paket adları dağıtım sürümüne göre değişebilir
-Fedora	✅ Hedefleniyor	Bağımlılıkların ayrıca kurulması gerekebilir
-openSUSE	✅ Hedefleniyor	Tumbleweed ve Leap
-CentOS / RHEL	⚠️ Değişken	Manuel bağımlılık kurulumu gerekebilir
-Not: Bu tablo hedeflenen uyumluluğu belirtir; tüm dağıtımlarda test edilmiş olunduğu anlamına gelmez. systemd kullanmayan Artix, Gentoo OpenRC ve Alpine gibi sistemlerde servis dosyalarının uyarlanması gerekebilir.
-📦 Bağımlılıklar
-Ubuntu / Debian
+🔗 Kaynak depolar
+Orijinal proje: ValdikSS/GoodbyeDPI
+Türkiye uyarlaması: cagritaskn/GoodbyeDPI-Turkey
+Linux portu: salihkahveci090/GoodbyeDPI-Turkey-Linux
+Bu fork: phantasmavaga00/GoodbyeDPI-Turkey-Linux-
+Kaynak projeler kendi geliştiricilerine aittir. Bu depo, mevcut kaynak kod ve lisans koşulları doğrultusunda geliştirilmiş kişisel bir uyarlamadır.
+💬 Geliştiricinin Notu
+Bu fork'u oluşturma amacım oldukça basit: Ben Linux kullanıyorum ve DNS tarafında Quad9 tercih ediyorum.
 
-Kurulum öncesinde gerekli paketleri yükleyin:
+Linux'u yeniden kurduğumda veya sistemi yeniden yapılandırdığımda DNS ayarlarını ve gerekli kurulum adımlarını her seferinde elle düzenlemek zorunda kalmak istemedim.
 
-bash
-sudo apt update
-sudo apt install -y \
-  build-essential \
-  libnetfilter-queue-dev \
-  libmnl-dev \
-  libnfnetlink-dev \
-  nftables
+Bu nedenle, kullandığım yapılandırmayı Quad9 ile uyumlu hâle getirip kurulum sürecini olabildiğince pratik tutmak istedim.
 
-Paket	Açıklama
-build-essential	GCC, Make ve derleme araçları
-libnetfilter-queue-dev	NFQUEUE geliştirme kütüphanesi
-libmnl-dev	Netlink yardımcı kütüphanesi
-libnfnetlink-dev	Netlink iletişim kütüphanesi
-nftables	Linux firewall kuralları
-Arch Linux
-bash
-sudo pacman -Syu
-sudo pacman -S --needed base-devel libnetfilter_queue nftables
+Bu depo benim kişisel ihtiyacımdan doğan bir düzenleme ve kolaylık çalışmasıdır. 🚀
 
-Not: Diğer dağıtımlarda paket adları ve bağımlılıkların kurulma yöntemi farklı olabilir.
-🚀 Kurulum Rehberi
-Yöntem 1: Otomatik kurulum (önerilen)
+🎯 Projenin Amacı
+🐧 Linux ortamındaki kurulum sürecini kolaylaştırmak.
+🌐 Quad9 DNS yapılandırmasını kullandığım kurulumla bir araya getirmek.
+⚙️ Tekrarlanan manuel ayar ihtiyacını azaltmak.
+📦 Kurulum ve kaldırma adımlarını anlaşılır biçimde belgelemek.
+🚀 Hızlı Kurulum
 
-1. Depoyu klonlayın:
+<details open>
+<summary><b>📥 1. Depoyu indir</b></summary>
+
+Terminali aç ve şu komutları çalıştır:
 
 bash
 git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
 cd GoodbyeDPI-Turkey-Linux-
 
 
-2. Bağımlılıkları yükleyin (Ubuntu / Debian):
+</details>
+
+<details>
+<summary><b>📦 2. Bağımlılıkları yükle (Ubuntu / Debian)</b></summary>
 
 bash
 sudo apt update
@@ -94,168 +82,86 @@ sudo apt install -y \
   nftables
 
 
-3. Kurulum scriptini çalıştırın:
+</details>
+
+<details>
+<summary><b>⚙️ 3. Kurulumu gerçekleştir</b></summary>
+
+Kurulum scriptini çalıştırmadan önce içeriğini incele:
+
+bash
+less service_install_dnsredir_turkey.sh
+
+
+Ardından kurulumu başlat:
 
 bash
 sudo bash service_install_dnsredir_turkey.sh
 
 
-Kurulum scriptinin yapılandırmasına bağlı olarak şu işlemler gerçekleştirilebilir:
+Scriptin gerekli servisleri ve DNS yapılandırmasını gerçekten oluşturduğunu kontrol et. İşlemler depodaki sürüme göre değişebilir.
 
-Derleme araçlarının kontrol edilmesi.
-goodbyedpi ikilisinin derlenmesi.
-systemd servisinin kurulması.
-DNS yönlendirme ayarlarının yapılandırılması.
-nftables kurallarının yüklenmesi.
-Uyarı: Kurulum scriptini yönetici yetkisiyle çalıştırmadan önce içeriğini inceleyin. Scriptin yaptığı işlemler, depodaki mevcut sürüme bağlıdır.
-Yöntem 2: Manuel derleme
+</details>
 
-Otomatik kurulum başarısız olursa aşağıdaki adımları uygulayabilirsiniz.
+<details>
+<summary><b>✅ 4. Durumu kontrol et</b></summary>
 
-1. Bağımlılıkları yükleyin:
-
-bash
-sudo apt update
-sudo apt install -y \
-  build-essential \
-  libnetfilter-queue-dev \
-  libmnl-dev \
-  libnfnetlink-dev \
-  nftables
-
-
-2. Projeyi derleyin:
-
-bash
-make
-
-
-3. Derlenen dosyayı yükleyin:
-
-bash
-sudo install -Dm755 goodbyedpi /usr/local/bin/goodbyedpi
-
-
-4. Servisi etkinleştirin ve başlatın:
-
-bash
-sudo systemctl enable --now goodbyedpi
-
-Not: Manuel kurulumun çalışması için projede uyumlu bir systemd servis dosyasının bulunması ve gerekli firewall kurallarının yapılandırılmış olması gerekir. Yalnızca binary dosyasını yüklemek, DNS yönlendirmesini veya DPI atlatma kurallarını otomatik olarak kurmaz.
-🔧 Kullanım ve Yönetim
-Servis durumunu kontrol etme
 bash
 sudo systemctl status goodbyedpi
 
-Servisi yeniden başlatma
-bash
-sudo systemctl restart goodbyedpi
 
-Servisi durdurma
-bash
-sudo systemctl stop goodbyedpi
+DNS çözümlemesini kontrol etmek için:
 
-Logları canlı izleme
-bash
-sudo journalctl -u goodbyedpi -f
-
-nftables kurallarını görüntüleme
-bash
-sudo nft list table inet goodbyedpi
-
-Not: Tablo adı, kullanılan scriptin yapılandırmasına göre değişebilir.
-Kaldırma
-
-Projede bulunan kaldırma scriptini çalıştırın:
-
-bash
-sudo bash service_remove.sh
-
-Kaldırma işleminden önce scriptin hangi servisleri ve firewall kurallarını kaldırdığını kontrol edin.
-🧪 Test ve Doğrulama
-
-Kurulumdan sonra aşağıdaki kontrolleri gerçekleştirebilirsiniz.
-
-1. DNS çözümleme testi
 bash
 dig discord.com +short
 
+Not: dig komutu için sistemde dnsutils paketinin kurulu olması gerekebilir. Servis adı ve DNS sonuçları sistem yapılandırmasına göre değişebilir.
 
-Komut, alan adının çözümlendiği IP adreslerini gösterir. IP adresleri zaman içinde değişebilir ve farklı CDN altyapılarına ait olabilir. Bu nedenle yalnızca belirli bir IP adresi beklemek yerine DNS çözümlemesinin başarılı olduğunu kontrol edin.
+</details>
 
-2. HTTPS erişim testi
-bash
-curl -sS -o /dev/null -w "%{http_code}\n" https://discord.com
+🔄 Kur ve Unut
 
+Amaç, ilk kurulumdan sonra her Linux kurulumunda aynı DNS ayarlarını elle yapmak zorunda kalmamaktır.
 
-Başarılı bir bağlantıda HTTP durum kodu alınması beklenir. 200, 301 veya 302 gibi kodlar başarılı bir HTTP yanıtına işaret edebilir; ancak yönlendirme ve hizmet davranışına göre başka kodlar da görülebilir.
+İşlem	Komut
+Servis durumunu kontrol et	sudo systemctl status goodbyedpi
+Servisi yeniden başlat	sudo systemctl restart goodbyedpi
+Logları görüntüle	sudo journalctl -u goodbyedpi -f
+Kurulumu kaldır	sudo bash service_remove.sh
 
-3. DNS sunucusu kontrolü
+Komutlar, depoda ilgili servis ve scriptlerin bulunduğu ve bu adlarla yapılandırıldığı varsayımına dayanır. Kaldırma scriptini çalıştırmadan önce içeriğini kontrol et.
 
-systemd-resolved kullanıyorsanız:
+🌐 Quad9 DNS
 
-bash
-resolvectl status
+Bu fork'un hedeflediği varsayılan Quad9 IPv4 DNS adresleri:
 
+Tür	Adres
+Birincil DNS	9.9.9.9
+İkincil DNS	149.112.112.112
 
-DNS sunucularını daha kısa görüntülemek için:
+DNS yönlendirmesi ile şifreli DNS aynı şey değildir. DNS trafiğinin şifrelenmesi için ayrıca uygun bir şifreli DNS istemcisi ve yapılandırması gerekir.
 
-bash
-resolvectl status | grep -A3 "DNS Servers"
+⚖️ Lisans ve Sorumlu Kullanım
 
+Bu depo teknik inceleme, Linux yapılandırması ve yazılım geliştirme amacıyla sunulmaktadır.
 
-Yapılandırmaya bağlı olarak 9.9.9.9 ve 149.112.112.112 adreslerini görmeniz beklenebilir. Ancak bu adreslerin görünmesi, bütün DNS sorgularının mutlaka bu sunuculardan geçtiğini tek başına kanıtlamaz.
-
-4. Sorun giderme
-
-Bağlantı kurulamıyorsa şu kontrolleri yapın:
-
-Servisin çalıştığını doğrulayın.
-Servis loglarını inceleyin.
-Gerekli kernel modüllerinin ve NFQUEUE desteğinin kullanılabilir olduğunu kontrol edin.
-nftables kurallarının doğru yüklendiğini doğrulayın.
-Başka bir VPN, firewall veya DNS hizmetinin kurallarla çakışmadığından emin olun.
-⚙️ Gelişmiş Seçenekler
-
-Depoda bulunması durumunda farklı ISP yapılandırmaları için aşağıdaki scriptler kullanılabilir.
-
-Script	Açıklama	Kullanım
-service_install_dnsredir_turkey.sh	Varsayılan kurulum yapılandırması	sudo bash service_install_dnsredir_turkey.sh
-service_install_dnsredir_turkey_alternative3_superonline.sh	Superonline için alternatif yapılandırma	Dosya adını depodan doğrulayın
-service_install_dnsredir_turkey_alternative4_superonline.sh	Superonline için başka bir alternatif	Dosya adını depodan doğrulayın
-turkey_dnsredir.sh	Servis kullanmadan DNS yönlendirme testi	sudo bash turkey_dnsredir.sh
-Önemli: Alternatif scriptlerin dosya adları ve parametreleri, depodaki gerçek dosyalarla karşılaştırılmalıdır. Bu dosyaların tamamının mevcut olduğu veya Quad9 DNS kullandığı doğrulanmadan çalıştırılmaması önerilir.
-🤝 Katkıda Bulunma
-
-Bu proje, topluluk katkılarına açıktır.
-
-Hata bildirimi: GitHub Issues üzerinden hata bildirebilirsiniz.
-Kod katkısı: Pull Request göndererek projeye katkıda bulunabilirsiniz.
-Görüş ve öneriler: Yeni özellikler, iyileştirmeler ve dokümantasyon önerileri paylaşabilirsiniz.
-Güvenlik bildirimleri: Güvenlik açıklarını herkese açık şekilde paylaşmadan önce uygun bir özel bildirim yöntemi tercih edin.
-
-Katkılarınız projenin daha kararlı, güvenli ve erişilebilir olmasına yardımcı olur.
-
-⚖️ Yasal Uyarı ve Lisans
-Kullanım amacı: Araç, ağ yapılandırması ve bağlantı sorunlarını gidermek amacıyla sunulmaktadır.
-Yasal sorumluluk: Kullanıcılar, aracı yürürlükteki mevzuata ve kullandıkları ağın kurallarına uygun şekilde kullanmakla yükümlüdür.
-Güvenlik: Firewall ve DNS ayarlarında değişiklik yapmak ağ bağlantınızı etkileyebilir. Değişikliklerden önce mevcut yapılandırmanızı yedekleyin.
-Lisans: Bu deponun lisansı, kök dizindeki LICENSE dosyasıyla doğrulanmalıdır. MIT lisansı kullanılacaksa dosyanın ve kaynak lisanslarının bu kullanıma uygun olduğundan emin olun.
+Kaynak projelerin telif ve lisans koşullarına uyulmalıdır.
+Kurulum scriptleri yönetici yetkisiyle çalıştırılmadan önce incelenmelidir.
+Kullanıcılar yazılımı yürürlükteki mevzuata ve kullandıkları sistemler üzerindeki yetkilerine uygun biçimde kullanmalıdır.
+Bu README herhangi bir hukuki garanti veya profesyonel hukuki görüş oluşturmaz.
+Depoda geçerli lisans, kök dizindeki LICENSE dosyasında belirtilmelidir.
 🙏 Teşekkürler
-
-Bu çalışmanın temelini oluşturan projelere ve hizmetlere teşekkürler:
-
-ValdikSS — Orijinal GoodbyeDPI projesi.
-cagritaskn — Türkiye özelleştirmeleri.
-salihkahveci090 — Linux portu ve temel altyapı.
-Quad9 — DNS çözümleme hizmeti.
+ValdikSS
+cagritaskn
+salihkahveci090
+Quad9
 
 <div align="center">
 
-GoodbyeDPI Turkey - Linux (Quad9 Edition)
+GoodbyeDPI Turkey — Linux (Quad9 Edition)
 
-Güvenli, hızlı ve daha erişilebilir internet için.
+Linux kurulumumu kendim için kolaylaştırmak amacıyla.
 
-Linux · Quad9 · DPI
+Personal project · Community contributions welcome
 
 </div>
