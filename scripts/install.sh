@@ -69,7 +69,7 @@ echo ""
 systemctl status goodbyedpi.service --no-pager -l || true
 echo ""
 info "nftables kuralları:"
-nft list table inet goodbyedpi 2>/dev/null || warn "nftables kuralları henüz yüklenmedi"
+nft list table inet goodbyedpi 2>/dev/null || warn "nftables kuralları henüz yüklenmedi."
 echo ""
 info "DNS testi:"
 resolvectl status 2>/dev/null | grep -A3 "DNS Servers" || dig +short discord.com @9.9.9.9
