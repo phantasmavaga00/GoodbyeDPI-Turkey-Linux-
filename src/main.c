@@ -23,7 +23,6 @@ static void signal_handler(int sig) {
     g_running = 0;
     fprintf(stderr, "\nStopping GoodbyeDPI Linux...\n");
 }
-
 static void print_usage(const char *prog) {
     fprintf(stderr,
         "GoodbyeDPI Linux %s\n"
