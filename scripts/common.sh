@@ -97,7 +97,7 @@ start_service() {
     systemctl restart goodbyedpi.service
     sleep 1
     if systemctl is-active --quiet goodbyedpi.service; then
-        info "Servis başarıyla başlatıldı!"
+        info "Servis başarıyla başlatıldı !"
     else
         error "Servis başlatılamadı. Log: journalctl -u goodbyedpi -n 20"
         journalctl -u goodbyedpi --no-pager -n 10
