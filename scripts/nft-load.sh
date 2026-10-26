@@ -3,7 +3,7 @@ LOG=/tmp/goodbyedpi-nft.log
 DNS_REDIR=${DNS_REDIR:-1}
 NFT=/usr/sbin/nft
 
-echo "=== nft-load.sh $(date) [DNS_REDIR=${DNS_REDIR}] ===" >> "$LOG"
+echo "==== nft-load.sh $(date) [DNS_REDIR=${DNS_REDIR}] ====" >> "$LOG"
 
 $NFT delete table inet goodbyedpi >> "$LOG" 2>&1
 
@@ -18,7 +18,7 @@ $NFT add rule inet goodbyedpi output_dpi tcp dport { 80, 443 } queue num 0 bypas
 
 if [ "${DNS_REDIR}" = "1" ]; then
     $NFT "add chain inet goodbyedpi nat_out { type nat hook output priority -100; policy accept; }" >> "$LOG" 2>&1 || exit 1
-    $NFT add rule inet goodbyedpi nat_out ip daddr != 127.0.0.0/8 udp dport 53 dnat ip to 77.88.8.8:1253 >> "$LOG" 2>&1 || exit 1
+    $NFT add rule inet goodbyedpi nat_out ip daddr != 127.0.0.0/8 udp dport 53 dnat ip to 9.9.9.9:53 >> "$LOG" 2>&1 || exit 1
 fi
 
 echo "OK" >> "$LOG"
