@@ -95,7 +95,7 @@ Bu proje kişisel bir öğrenme çalışmasıdır. Hata bulursanız **Issue** a�
 
 Bu proje kişisel kullanım ve teknik öğrenme amaçlıdır.
 - Kullanıcılar yerel yasalara uymakla yükümlüdür.
-- Yazılım "olduğu gibi" (as-is) sunulur, garanti verilmemektedir.
+- Yazılım "olduğu gibi" sunulur, garanti verilmemektedir.
 - Geliştirici kullanım sonuçlarından sorumlu değildir.
 
 ---
