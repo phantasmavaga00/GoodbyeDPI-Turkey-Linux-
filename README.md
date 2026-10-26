@@ -1,166 +1,156 @@
-<div align="center">
-⚡ GoodbyeDPI Turkey — Linux
-QUAD9 EDITION
+Elbette! İşte kopyalayıp doğrudan README.md dosyanıza yapıştırabileceğiniz tek parça halindeki içerik:
+# GoodbyeDPI Turkey - Linux (Quad9 Edition)
 
-<p>
-  <img src="https://img.shields.io/badge/PLATFORM-LINUX-24292f?style=for-the-badge&logo=linux&logoColor=white" alt="Linux">
-  <a href="https://quad9.net/"><img src="https://img.shields.io/badge/DNS-QUAD9-d71921?style=for-the-badge" alt="Quad9 DNS"></a>
-  <img src="https://img.shields.io/badge/PROJECT-PERSONAL_FORK-8250df?style=for-the-badge" alt="Personal fork">
-</p>
+> **Kişisel Kullanım ve Öğrenme Amaçlı Bir Fork**  
+> Bu proje, günlük internet kullanımımda ihtiyaç duyduğum bir çözümü kendim için uyarlamak ve bu süreçte Linux tarafında kendimi geliştirmek amacıyla fork'ladığım bir çalışmadır.
 
-Kendi Linux ortamım. Kendi DNS tercihim. Daha pratik kurulum.
+---
 
-Kurulum · Yönetim · Testler · Credits
+## 📌 Bu Proje Nedir?
 
-</div>
+Bu repo, aşağıdaki açık kaynak projelerin bir türevidir:
 
-<table>
-<tr>
-<td align="center" width="33%">
-<h3>🐧 Linux</h3>
-<sub>Günlük kullanım</sub>
-</td>
-<td align="center" width="33%">
-<h3>🌐 Quad9</h3>
-<sub>DNS tercihim</sub>
-</td>
-<td align="center" width="33%">
-<h3>⚙️ Open Source</h3>
-<sub>Kişisel geliştirme</sub>
-</td>
-</tr>
-</table>
-🖥️ Proje hakkında
+-   **Orijinal Motor:** [ValdikSS/GoodbyeDPI](https://github.com/ValdikSS/GoodbyeDPI)
+-   **Türkiye Kuralları:** [cagritaskn/GoodbyeDPI-Turkey](https://github.com/cagritaskn/GoodbyeDPI-Turkey)
+-   **Linux Portu:** [salihkahveci090/GoodbyeDPI-Turkey-Linux](https://github.com/salihkahveci090/GoodbyeDPI-Turkey-Linux-)
 
-Bu depo, salihkahveci090/GoodbyeDPI-Turkey-Linux projesinden fork edilerek kişisel kullanım ihtiyaçlarıma göre düzenlenmektedir.
+Ben bu projeyi **kendi günlük kullanımım** için uyarladım. Amacım yeni bir araç geliştirmek değil; mevcut bir çözümü kendi ihtiyaçlarıma uygun hale getirmek ve bu süreçte Linux sistem yönetimi, derleme süreçleri ve ağ yapılandırması konularında pratik yapmaktı.
 
-Linux kullanıyorum ve DNS hizmeti olarak Quad9'u tercih ediyorum. Sistemimi yeniden kurduğumda aynı ayarları tekrar tekrar elle yapmak istemediğim için bu forku oluşturdum.
+---
 
-Amacım, günlük kullanımımı kolaylaştırırken Linux ağ yapılandırması ve açık kaynak geliştirme konusunda kendimi geliştirmek.
-✨ Projenin odağı
+## 🎯 Neden Fork'ladım?
 
-    🐧 Linux ortamında kişisel yapılandırma.
-    🌐 Quad9 DNS tercihi.
-    ⚙️ Tekrarlanan manuel ayarları azaltma.
-    📚 Kaynak kod üzerinde çalışarak öğrenme ve geliştirme.
+Kendi kullanımım için şu düzenlemeleri yapmam gerekiyordu:
 
-    Bu depo bağımsız bir kişisel uyarlamadır. Gerçek özellikler, kullanılan kaynak kodlara ve yapılandırma dosyalarına bağlıdır.
+1.  **DNS Tercihi:** Mevcut Linux portu varsayılan olarak Yandex DNS kullanıyordu. Ben günlük kullanımımda **Quad9** (`9.9.9.9`) tercih ettiğim için tüm DNS yapılandırmasını buna göre güncelledim.
+2.  **Port Uyumu:** Yandex'in kullandığı özel port (1253) yerine Quad9'un standart portunu (53) kullanacak şekilde ayarladım.
+3.  **Dağıtım Uyumu:** Proje aslen Arch Linux için hazırlanmıştı. Ben Ubuntu/Debian tabanlı sistemlerde çalışacak şekilde gerekli bağımlılıkları ve kurulum adımlarını uyarladım.
+4.  **Güvenlik Ayarları:** DNSSEC ve şifreli DNS (DoT) desteğini etkinleştirdim.
 
-🚀 Kurulum
-01 — Depoyu klonla
-bash
+Bu değişiklikler, tamamen **kişisel tercihlerim ve öğrenme sürecim** kapsamında yapılmıştır.
 
-git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
-cd GoodbyeDPI-Turkey-Linux-
+---
 
-02 — Bağımlılıkları yükle
+## 🐧 Hangi Sistemlerde Çalışır?
 
-Arch Linux / CachyOS:
-bash
+Bu proje, `systemd` kullanan modern Linux dağıtımlarında çalışacak şekilde tasarlanmıştır:
 
-sudo pacman -S --needed \
-  libnetfilter_queue \
-  nftables \
-  gcc \
-  make
+| Dağıtım | Durum | Not |
+|---|---|---|
+| Ubuntu / Debian / Mint | ✅ Çalışıyor | Test edildi |
+| Arch Linux / Manjaro / CachyOS | ✅ Çalışıyor | Orijinal hedef platform |
+| Fedora | ✅ Çalışması beklenir | Bağımlılık isimleri farklı olabilir |
+| openSUSE | ✅ Çalışması beklenir | — |
+| systemd kullanmayan dağıtımlar | ⚠️ Ek uyarlama gerekir | Servis dosyası elle düzenlenmeli |
 
-Ubuntu / Debian için gerekli derleme ve ağ kütüphanelerinin geliştirme paketlerini dağıtımının paket yöneticisi üzerinden yükle.
-03 — Depo içeriğini kontrol et
-bash
+---
 
-ls -la
+## 📦 Kurulum
 
-Kurulum scriptinin ve varsa Makefile dosyasının gerçekten mevcut olduğunu kontrol et. Scripti yönetici yetkisiyle çalıştırmadan önce içeriğini incele.
-04 — Kurulumu tamamla
+### Gereksinimler
 
-Depodaki gerçek kurulum talimatlarını izle. DNS yapılandırmasını, servis dosyalarını ve firewall kurallarını değiştiren işlemleri çalıştırmadan önce ne yaptıklarını doğrula.
+Kurulumdan önce aşağıdaki paketlerin sisteminizde kurulu olması gerekir:
 
-    ⚠️ Kurulum scriptinin adı ve davranışı doğrulanmadan belirli bir komutun mevcut olduğu varsayılmamalıdır.
+**Ubuntu / Debian / Mint için:**
+```bash
+sudo apt update
+sudo apt install -y build-essential libnetfilter_queue-dev libmnl-dev libnfnetlink-dev nftables
 
-⚙️ Servis yönetimi
+Arch Linux / Manjaro / CachyOS için:
+sudo pacman -S --noconfirm base-devel libnetfilter_queue nftables
+Kurulum Adımları
 
-Kurulum sonucunda goodbyedpi adlı bir systemd servisi oluşturulmuşsa aşağıdaki komutlar kullanılabilir.
-İşlem	Komut
-Durum	sudo systemctl status goodbyedpi
-Yeniden başlat	sudo systemctl restart goodbyedpi
-Durdur	sudo systemctl stop goodbyedpi
-Loglar	sudo journalctl -u goodbyedpi -f
+    Repoyu klonlayın:
+    git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
+    cd GoodbyeDPI-Turkey-Linux-
 
-Servis adını doğrulamak için:
-bash
+    Bağımlılıkları kurun (yukarıdaki komutlardan sisteminize uygun olanı çalıştırın).
 
-systemctl list-unit-files --type=service | grep -i goodbyedpi
+    Kurulum scriptini çalıştırın:
+    sudo bash service_install_dnsredir_turkey.sh
 
-🧪 Test ve doğrulama
-DNS çözümlemesi
-bash
+Script otomatik olarak şunları yapar:
 
+    Gerekli kaynak kodları derler.
+    goodbyedpi binary'sini oluşturur.
+    systemd servisini kurar ve etkinleştirir.
+    DNS ayarlarını Quad9'e yönlendirir.
+    nftables kurallarını yükler.
+
+🔧 Kullanım
+Servis Yönetimi
+# Durum kontrolü
+sudo systemctl status goodbyedpi
+
+# Yeniden başlatma
+sudo systemctl restart goodbyedpi
+
+# Durdurma
+sudo systemctl stop goodbyedpi
+Log Takibi
+journalctl -u goodbyedpi -f
+Kaldırma
+sudo bash service_remove.sh
+✅ Kurulumun Çalıştığını Doğrulama
+
+Kurulumdan sonra şu komutlarla kontrol edebilirsiniz:
+
+1. DNS sunucusu kontrolü:
+resolvectl status | grep -A3 "DNS Servers"
+
+Çıktıda 9.9.9.9 görünmelidir.
+
+2. DNS çözümleme testi:
 dig discord.com +short
 
-Etkin DNS yapılandırması
-bash
+Geçerli bir IP adresi dönmelidir.
 
-resolvectl status
+3. nftables kural kontrolü:
+sudo nft list table inet goodbyedpi
 
-HTTPS bağlantısı
-bash
+dnat ip to 9.9.9.9:53 satırı görünmelidir.
+⚙️ Alternatif Kurulum Scriptleri
 
-curl -sS -o /dev/null \
-  -w "HTTP Status: %{http_code}\n" \
-  https://discord.com
+Farklı ihtiyaçlar için alternatif scriptler mevcuttur:
+Script	Açıklama
+service_install_dnsredir_turkey.sh	Varsayılan kurulum (önerilen)
+service_install_dnsredir_turkey_alternative3_superonline.sh	SuperOnline için alternatif yapılandırma
+service_install_dnsredir_turkey_alternative4_superonline.sh	SuperOnline için alternatif yapılandırma
+service_install_dnsredir_turkey_alternative5_superonline.sh	SuperOnline için alternatif yapılandırma
+turkey_dnsredir.sh	Servissiz, tek seferlik çalıştırma
 
-Quad9 bağlantı kontrolü
+Tüm scriptler Quad9 DNS kullanacak şekilde güncellenmiştir.
+🤝 Geri Bildirim ve İletişim
 
-<div align="center">
+Bu proje kişisel bir öğrenme çalışmasıdır ve hatalar içerebilir.
 
-<a href="https://on.quad9.net/">
-<img src="https://img.shields.io/badge/VERIFY-QUAD9_CONNECTION-d71921?style=for-the-badge" alt="Verify Quad9 connection">
-</a>
+    Bir hata fark ederseniz, lütfen Issues bölümünden bildirin.
+    Önerileriniz ve geri bildirimleriniz benim için değerlidir.
+    Ben de öğrenme sürecindeyim; yapıcı eleştiriler her zaman memnuniyetle karşılanır.
 
-<br>
-Quad9 DNS	IPv4 adresi
-Birincil	9.9.9.9
-İkincil	149.112.112.112
+⚖️ Yasal Uyarı
 
-Kaynak: <a href="https://quad9.net/service/service-addresses-and-features/">Quad9 resmî dokümantasyonu</a>.
+Bu proje, kişisel kullanım ve teknik öğrenme amacıyla hazırlanmıştır.
 
-</div>
+    Kullanıcılar, bu yazılımı kullanırken geçerli oldukları bölgedeki yürürlükte olan tüm yasa ve düzenlemelere uymakla yükümlüdür.
+    Yazılım "olduğu gibi" (as-is) sunulmaktadır; belirli bir amaca uygunluğu konusunda herhangi bir garanti verilmemektedir.
+    Geliştirici, yazılımın kullanımından doğabilecek herhangi bir sonuçtan sorumlu tutulamaz.
+    Bu proje, hiçbir kurum, kuruluş veya hizmet sağlayıcı ile ilişkili değildir.
 
-DNS çözümlemesinin başarılı olması, sorgunun mutlaka Quad9 üzerinden yapıldığını veya şifrelendiğini tek başına kanıtlamaz. Etkin DNS yapılandırmasını ve bağlantı testini ayrıca kontrol et.
-🧹 Kaldırma
+🙏 Teşekkürler
 
-Depodaki kaldırma talimatlarını incele. Bir kaldırma scripti bulunuyorsa adını ve içeriğini doğrula.
+Bu projeyi mümkün kılan tüm açık kaynak geliştiricilerine teşekkür ederim:
 
-Scriptin hangi servisleri, DNS ayarlarını ve firewall kurallarını değiştirdiğini kontrol etmeden çalıştırma. Kaldırma sonrasında sistem yapılandırmasını yeniden doğrula.
-📜 Lisans
-
-<div align="center">
-
-<img src="https://img.shields.io/badge/LICENSE-MIT-238636?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License">
-
-MIT License — Özgürce kullanabilir, değiştirebilir ve dağıtabilirsiniz.
-
-</div>
-
-Lisansın tam metni LICENSE dosyasında bulunmalıdır. MIT lisansını kullanmadan önce kaynak kodların ve üçüncü taraf bileşenlerin lisans koşullarını doğrula.
-🛡️ Sorumluluk reddi
-
-Bu depo, kişisel kullanım ve teknik öğrenme amacıyla hazırlanmış bağımsız bir uyarlamadır. Kaynak projelerin geliştiricileriyle resmî bir ortaklık veya onay ilişkisi bulunduğu anlamına gelmez.
-
-Yazılım, yürürlükteki hukukun izin verdiği ölçüde garanti verilmeksizin sunulur. Kullanıcılar kaynak kodu incelemekten, sistemlerini korumaktan ve yazılımı geçerli mevzuata uygun kullanmaktan sorumludur. Bu açıklama, kanunen sınırlandırılamayan sorumlulukları ortadan kaldırmaz ve hukuki danışmanlık niteliği taşımaz.
-🙏 Credits
-
-    @ValdikSS — GoodbyeDPI
-    @cagritaskn — GoodbyeDPI-Turkey
-    @salihkahveci090 — GoodbyeDPI-Turkey-Linux
-    Quad9 — DNS hizmeti
-
-Kaynak projelerin telif hakları ve lisans koşulları ilgili sahiplerine aittir. Bu depo kişisel ihtiyaçlar doğrultusunda hazırlanmış bağımsız bir uyarlamadır.
+    ValdikSS — Orijinal GoodbyeDPI projesi
+    cagritaskn — Türkiye özelleştirmeleri
+    salihkahveci090 — Linux portu
+    Quad9 — Güvenli DNS altyapısı
 
 <div align="center">
 
-GoodbyeDPI Turkey · Linux · Quad9 Edition
+GoodbyeDPI Turkey - Linux (Quad9 Edition)
 
-Built for my own Linux workflow.
+Kişisel kullanım için uyarlanmış bir fork.
 
-</div>
+License: MIT
+</div> ```
