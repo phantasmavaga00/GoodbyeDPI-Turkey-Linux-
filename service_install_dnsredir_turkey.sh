@@ -2,7 +2,7 @@
 source "$(dirname "$0")/scripts/common.sh"
 check_root
 
-title "GoodbyeDPI Turkey - Linux Kurulumu (Ana)"
+title "GoodbyeDPI Turkey - Linux Quad9 Kurulumu"
 info "Mod: Fragment=5 byte, TTL=5, DNS=Quad9 (önerilen)"
 
 build_binary
