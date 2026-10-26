@@ -32,15 +32,15 @@ static void print_usage(const char *prog) {
         "  --no-fragment         Disable TCP fragmentation (only fake packets)\n"
         "  --set-ttl N           TTL for fake packets (default: 5)\n"
         "  --dns-addr ADDR       IPv4 DNS server to redirect to\n"
-        "  --dns-port PORT       Port for IPv4 DNS server (default: 1253)\n"
+        "  --dns-port PORT       Port for IPv4 DNS server (default: 53)\n"
         "  --dnsv6-addr ADDR     IPv6 DNS server to redirect to\n"
-        "  --dnsv6-port PORT     Port for IPv6 DNS server (default: 1253)\n"
+        "  --dnsv6-port PORT     Port for IPv6 DNS server (default: 53)\n"
         "  --queue-num N         NFQUEUE number (default: 0)\n"
         "  --no-fake             Disable fake packet injection\n"
         "  --help                Show this help\n\n"
         "Turkey preset (default): --fragment-size 5 --set-ttl 5\n"
-        "                         --dns-addr 77.88.8.8 --dns-port 1253\n"
-        "                         --dnsv6-addr 2a02:6b8::feed:0ff --dnsv6-port 1253\n",
+        "                         --dns-addr 9.9.9.9 --dns-port 53\n"
+        "                         --dnsv6-addr 2620:fe::fe --dnsv6-port 53\n",
         GOODBYEDPI_VERSION, prog);
 }
 
@@ -81,10 +81,10 @@ int main(int argc, char *argv[]) {
     g_cfg.fragment_size = FRAGMENT_SIZE_DEFAULT;
     g_cfg.fragment_enabled = 1;
     g_cfg.set_ttl = FAKE_TTL_DEFAULT;
-    strncpy(g_cfg.dns_addr, "77.88.8.8", sizeof(g_cfg.dns_addr) - 1);
-    g_cfg.dns_port = 1253;
-    strncpy(g_cfg.dnsv6_addr, "2a02:6b8::feed:0ff", sizeof(g_cfg.dnsv6_addr) - 1);
-    g_cfg.dnsv6_port = 1253;
+    strncpy(g_cfg.dns_addr, "9.9.9.9", sizeof(g_cfg.dns_addr) - 1);
+    g_cfg.dns_port = 53;
+    strncpy(g_cfg.dnsv6_addr, "2620:fe::fe", sizeof(g_cfg.dnsv6_addr) - 1);
+    g_cfg.dnsv6_port = 53;
     g_cfg.queue_num = NFQUEUE_NUM_DEFAULT;
     g_cfg.fake_enabled = 1;
 
