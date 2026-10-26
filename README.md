@@ -1,4 +1,3 @@
-Elbette! İşte kopyalayıp doğrudan README.md dosyanıza yapıştırabileceğiniz tek parça halindeki içerik:
 # GoodbyeDPI Turkey - Linux (Quad9 Edition)
 
 > **Kişisel Kullanım ve Öğrenme Amaçlı Bir Fork**  
