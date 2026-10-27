@@ -24,7 +24,7 @@ Aşağıdaki komutları sırasıyla çalıştırın. Script tüm işlemleri (der
 
 ```bash
 # 1. Gerekli kütüphaneleri ve derleyiciyi kurun
-sudo apt update && sudo apt install -y build-essential libnetfilter_queue-dev libmnl-dev libnfnetlink-dev nftables
+sudo add-apt-repository universe -y && sudo apt update && sudo apt install -y build-essential libnetfilter-queue-dev libmnl-dev libnfnetlink-dev nftables
 
 # 2. Projeyi klonlayın ve klasöre girin
 git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
