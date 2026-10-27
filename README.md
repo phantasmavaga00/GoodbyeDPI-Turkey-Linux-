@@ -27,7 +27,7 @@ Aşağıdaki komutları sırasıyla çalıştırın. Script tüm işlemleri (der
 sudo apt update && sudo apt install -y build-essential libnetfilter_queue-dev libmnl-dev libnfnetlink-dev nftables
 
 # 2. Projeyi klonlayın ve klasöre girin
-git clone https://github.com
+git clone https://github.com/phantasmavaga00/GoodbyeDPI-Turkey-Linux-.git
 cd GoodbyeDPI-Turkey-Linux-
 
 # 3. Kurulumu başlatın (root yetkisi gerektirir)
