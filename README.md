@@ -59,7 +59,7 @@ sudo systemctl stop goodbyedpi
 # DNS sunucusu Quad9 olmalı
 resolvectl status | grep -A3 "DNS Servers"
 
-# Discord gerçek IP'ye çözülüyor mu?
+# Discord'un gerçek IP adresi dönmeli 
 dig discord.com +short
 ```
 
